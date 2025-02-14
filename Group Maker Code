@@ -1,39 +1,39 @@
 import random
 
-# These lines of code are data for the code to work, and random.shuffle is used to shuffle the names
+
 class_list = ["Leo", "Mason", "Chris", "Nathan", "Jaiden", "Aidan", "Gavin", "Shahood", "Marcos", "Ryan", "Muntag", "Brandon", "Caleb", "Andrew", "Wes", "Abraham", "Tyler", "Thomas", "Connor", "Luke"]
 
-# Function to generate groups based on shuffled class list
+
 def generate_groups(class_list, group_size):
-    random.shuffle(class_list)  # Shuffle the class list
+    random.shuffle(class_list)  
     groups = []
-    for i in range(0, len(class_list), group_size):  # Use a for loop to group students
+    for i in range(0, len(class_list), group_size): 
         groups.append(class_list[i:i+group_size])
     return groups
 
-# Function to check if the "cannot work together" rule is violated in the groups
-def check_groups_for_conflict(groups, cannotWorkTogether):
-    for group in groups:
-        # Check if both pairs are in the same group
-        if any(student in group for student in cannotWorkTogether[0]) and any(student in group for student in cannotWorkTogether[1]):
-            return True  # Conflict found
-    return False  # No conflict found
 
-# While loop so you can run the code until the user says stop
+def check_groups(groups, cannotWorkTogether):
+    for group in groups:
+        
+        if any(student in group for student in cannotWorkTogether[0]) and any(student in group for student in cannotWorkTogether[1]):
+            return True  
+    return False  
+
+
 while True:
-    # Displaying an opening screen with "Welcome to Group Maker" and a display of the class list
+   
     print("Welcome to Group Maker")
     print("======================")
     print(f"Class List: {', '.join(class_list)}")
     print()
 
-    # Ask for people who cannot work together
+  
     print("Who cannot work together? (Please enter names in the format name,name)")
     cannotWorkTogether1 = input().split(",")
 
-    # Check if names in cannotWorkTogether1 are valid
+    
     invalid_names1 = []
-    for name in cannotWorkTogether1:  # Check each name using a for loop
+    for name in cannotWorkTogether1:  
         if name not in class_list:
             invalid_names1.append(name)
 
@@ -41,16 +41,16 @@ while True:
         print(f"Invalid names: {', '.join(invalid_names1)}")
         continue
 
-    # Display the students who cannot work together
+    
     print(f"First set of students who cannot work together: {', '.join(cannotWorkTogether1)}")
 
-    # Ask for another set of people who cannot work together
+    
     print("Who else cannot work together? (Please enter names in the format name,name)")
     cannotWorkTogether2 = input().split(",")
 
-    # Check if names in cannotWorkTogether2 are valid
+    
     invalid_names2 = []
-    for name in cannotWorkTogether2:  # Check each name using a for loop
+    for name in cannotWorkTogether2:  
         if name not in class_list:
             invalid_names2.append(name)
 
@@ -58,17 +58,17 @@ while True:
         print(f"Invalid names: {', '.join(invalid_names2)}")
         continue
 
-    # Display the second set of students who cannot work together
+    
     print(f"Second set of students who cannot work together: {', '.join(cannotWorkTogether2)}")
 
-    # Combine both sets of "cannot work together" students
+    
     cannotWorkTogether = [cannotWorkTogether1, cannotWorkTogether2]
 
-    # Ask user for the desired group size
+    
     print("How many people do you want in a group? 2, 3, or 4?")
     userInput = input()
 
-    # To determine user input and display the right groups and number of people in a group
+   
     if userInput == "4":
         group_size = 4
     elif userInput == "3":
@@ -79,24 +79,24 @@ while True:
         print("Invalid input! Please enter 2, 3, or 4.")
         continue
 
-    # Generate groups and check if they are valid (no conflict between "cannot work together" pairs)
+    
     while True:
         groups = generate_groups(class_list, group_size)
-        if not check_groups_for_conflict(groups, cannotWorkTogether):
-            break  # Exit the loop if there are no conflicts
+        if not check_groups(groups, cannotWorkTogether):
+            break  
 
-    # Display the generated groups
+   
     print("\nGenerated Groups:")
-    for group in groups:  # Use for loop to display groups
+    for group in groups:  
         print(group)
 
-    # Ask the user if they are done and if they enter 'y' the code terminates, otherwise it loops again
+    
     print("\nAre you done making groups? (y/n)")
     user_completed = input().strip().lower()
 
     if user_completed == 'y':
-        break  # Exit the loop if user is done
+        break  
     elif user_completed == 'n':
-        continue  # Continue looping if user is not done
+        continue  
     else:
         print("Invalid input! Please enter 'y' or 'n'.")
