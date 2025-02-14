@@ -1,5 +1,3 @@
-import random
-
 
 class_list = ["Leo", "Mason", "Chris", "Nathan", "Jaiden", "Aidan", "Gavin", "Shahood", "Marcos", "Ryan", "Muntag", "Brandon", "Caleb", "Andrew", "Wes", "Abraham", "Tyler", "Thomas", "Connor", "Luke"]
 
@@ -23,12 +21,13 @@ while True:
 
     if invalid_names1:
         print(f"Invalid names: {', '.join(invalid_names1)}")
-        continue
+        
 
     
     print(f"First set of students who cannot work together: {', '.join(cannotWorkTogether1)}")
+    break
 
-    
+while True:    
     print("Who else cannot work together? (Please enter names in the format name,name)")
     cannotWorkTogether2 = input().split(",")
 
@@ -40,15 +39,15 @@ while True:
 
     if invalid_names2:
         print(f"Invalid names: {', '.join(invalid_names2)}")
-        continue
+        
 
     
     print(f"Second set of students who cannot work together: {', '.join(cannotWorkTogether2)}")
 
     
     cannotWorkTogether = [cannotWorkTogether1, cannotWorkTogether2]
-
-    
+    break
+while True:
     print("How many people do you want in a group? 2, 3, or 4?")
     userInput = input()
 
@@ -73,14 +72,16 @@ while True:
     print("\nGenerated Groups:")
     for group in groups:  
         print(group)
+    break
 
-    
+while True:    
     print("\nAre you done making groups? (y/n)")
     user_completed = input().strip().lower()
 
     if user_completed == 'y':
         break  
     elif user_completed == 'n':
-        continue  
+        continue
     else:
         print("Invalid input! Please enter 'y' or 'n'.")
+    break
