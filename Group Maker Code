@@ -1,6 +1,7 @@
+import random
 
 class_list = ["Leo", "Mason", "Chris", "Nathan", "Jaiden", "Aidan", "Gavin", "Shahood", "Marcos", "Ryan", "Muntag", "Brandon", "Caleb", "Andrew", "Wes", "Abraham", "Tyler", "Thomas", "Connor", "Luke"]
-
+random.shuffle(class_list)
 
 while True:
    
