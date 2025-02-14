@@ -4,22 +4,6 @@ import random
 class_list = ["Leo", "Mason", "Chris", "Nathan", "Jaiden", "Aidan", "Gavin", "Shahood", "Marcos", "Ryan", "Muntag", "Brandon", "Caleb", "Andrew", "Wes", "Abraham", "Tyler", "Thomas", "Connor", "Luke"]
 
 
-def generate_groups(class_list, group_size):
-    random.shuffle(class_list)  
-    groups = []
-    for i in range(0, len(class_list), group_size): 
-        groups.append(class_list[i:i+group_size])
-    return groups
-
-
-def check_groups(groups, cannotWorkTogether):
-    for group in groups:
-        
-        if any(student in group for student in cannotWorkTogether[0]) and any(student in group for student in cannotWorkTogether[1]):
-            return True  
-    return False  
-
-
 while True:
    
     print("Welcome to Group Maker")
@@ -79,10 +63,10 @@ while True:
         print("Invalid input! Please enter 2, 3, or 4.")
         continue
 
-    
+    check_groups = cannotWorkTogether
     while True:
-        groups = generate_groups(class_list, group_size)
-        if not check_groups(groups, cannotWorkTogether):
+        groups = (class_list, group_size)
+        if not check_groups(groups):
             break  
 
    
